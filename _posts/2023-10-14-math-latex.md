@@ -1,5 +1,5 @@
 ---
-title: MathJax and LaTeX
+title: 왜 안되냐
 author: Tao He
 date: 2023-10-14
 category: Jekyll

@@ -14,7 +14,7 @@
     "url": "/jekyll-gitbook/pages/design/draft/",
     "body": "This is an draft page."
   },"/jekyll-gitbook/jekyll/2023-10-14-math-latex.html": {
-    "title": "MathJax and LaTeX",
+    "title": "왜 안되냐",
     "keywords": "Jekyll",
     "url": "/jekyll-gitbook/jekyll/2023-10-14-math-latex.html",
     "body": "This jekyll-theme supports MathJax to render $\\LaTeX$ and mathematics expressions. TIP Currently, Kramdown uses double dollar sign delimiters for inline and display math: https://kramdown.gettalong.org/syntax.html#math-blocks. e.g., The well known Pythagorean theorem $x^2 + y^2 = z^2$ was proved to be invalid for other exponents. Meaning the next equation has no integer solutions: $$ x^n + y^n = z^n $$ The well known Pythagorean theorem $x^2 + y^2 = z^2$ was proved to be invalid for other exponents. Meaning the next equation has no integer solutions: \\[x^n + y^n = z^n\\] Another example with more complex markups: When $a \\ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$ When $a \\ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are \\[x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.\\] Refer to the MathJax website for more examples."
