@@ -12,3 +12,5 @@ gem 'jemoji'
 gem 'webrick'
 
 # gem "rails"
+
+gem "faraday-retry", "~> 2.2"

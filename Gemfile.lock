@@ -24,6 +24,13 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
+    faraday (2.7.12)
+      base64
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.2)
+    faraday-retry (2.2.0)
+      faraday (~> 2.0)
     ffi (1.16.3)
     forwardable-extended (2.6.0)
     gemoji (4.1.0)
@@ -99,6 +106,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  faraday-retry (~> 2.2)
   jekyll
   jekyll-feed
   jekyll-readme-index
