@@ -103,7 +103,6 @@ DEPENDENCIES
   jekyll-feed
   jekyll-readme-index
   jemoji
-  webrick
 
 BUNDLED WITH
    2.4.21
