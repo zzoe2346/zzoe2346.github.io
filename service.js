@@ -1,5 +1,28 @@
 initfetch()
 
+const url = 'https://api.flarelane.com/v1/projects/e6060748-0244-4a5b-8029-2c9d6a2f0876/notifications';
+const token = '8R6iUE3lSyz4aW_O0cjFm';
+
+const data = {
+    targetType: 'device',
+    targetIds: ['88fb7f8b-b66c-4aa6-ba34-a544e4171a4c'],
+    title: '안녕하세요',
+    body: '빨리 출발하세요'
+};
+
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+})
+    .then(response => response.json())
+    .then(data => console.log('Success:', data))
+    .catch(error => console.error('Error:', error));
+
+
 
 
 function initfetch() {
