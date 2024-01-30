@@ -1,9 +1,9 @@
 {
-  "name": "HackerWeb",
-  "short_name": "HackerWeb",
+  "name": "출발하세요",
+  "short_name": "출발",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fff",
-  "description": "A readable Hacker News app.",
+  "description": "사용자가 설정한 남은 버스정류장 개수일때 미리 알림을 드립니다.",
   "scope": "/"
 }

@@ -1,55 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-<!--    이건 풀어-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
     <script> FlareLane.initialize({ projectId: "e6060748-0244-4a5b-8029-2c9d6a2f0876" }); </script>
-    <!--    이건 풀어-->
 
-    <!--    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>-->
-<!--    <script>-->
-<!--        window.OneSignalDeferred = window.OneSignalDeferred || [];-->
-<!--        OneSignalDeferred.push(function(OneSignal) {-->
-<!--            OneSignal.init({-->
-<!--                appId: "cfdcefa9-660a-4a18-bcc1-abbbdcf3a8e7",-->
-<!--                safari_web_id: "web.onesignal.auto.37a647a2-1bdc-46a8-a505-4f4cc6400a46",-->
-<!--                notifyButton: {-->
-<!--                    enable: true,-->
-<!--                },-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
     <link rel="manifest" href="/manifest.json">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h1>testing...</h1>
+<h1>Let's GO!</h1>
 
-<p>출발하세요!</p>
 <a href="https://businfo.daegu.go.kr:8095/dbms_web/">버스 정류장 번호 찾기</a>
 
-<label id="test">basic</label>
 
-
-
-<form action="" method="get" class="form-example">
-    <div class="form-example">
-        <label for="name">버스 정류장 번호: </label>
-        <input type="text" name="name" id="number" required />
+<form method="get" id="busStopForm" onsubmit="submitForm(event)">
+    <div class="busStop">
+        <label>버스 정류장 번호: </label>
+        <input type="text" name="name" id="busStopNumber" required />
+    </div>
+    <div class="busNumber">
+        <label>버스 번호: </label>
+        <input type="number"  id="busNumber" required />
     </div>
     <div class="form-example">
-        <label for="email">버스 번호: </label>
-        <input type="email" name="email" id="bus" required />
+        <label>몇 정류장 전에 알려드릴까요?: </label>
+        <input type="number"  id="targetNumber" required />
     </div>
     <div class="form-example">
-        <label for="email">몇 정류장 전에 알려드릴까요?: </label>
-        <input type="number" name="email" id="bus" required />
-    </div>
-    <div class="form-example">
-        <input type="submit" value="Subscribe!" />
+        <input type="submit" value="시작!" />
     </div>
 </form>
+
 <script src="service.js"></script>
 </body>
 </html>
