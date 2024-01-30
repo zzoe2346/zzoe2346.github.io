@@ -6,6 +6,19 @@
     <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
     <script> FlareLane.initialize({ projectId: "e6060748-0244-4a5b-8029-2c9d6a2f0876" }); </script>
 
+<!--    <script>-->
+<!--        if ('serviceWorker' in navigator) {-->
+<!--            navigator.serviceWorker.register('/javascript/service-worker.js')-->
+<!--                .then(registration => {-->
+<!--                    console.log('Service Worker registered with scope:', registration.scope);-->
+<!--                })-->
+<!--                .catch(error => {-->
+<!--                    console.error('Service Worker registration failed:', error);-->
+<!--                });-->
+<!--        }-->
+<!--    </script>-->
+
+
     <link rel="manifest" href="/manifest.json">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,6 +28,7 @@
 
 <a href="https://businfo.daegu.go.kr:8095/dbms_web/">버스 정류장 번호 찾기</a>
 
+<label id="test"></label>
 
 <form method="get" id="busStopForm" onsubmit="submitForm(event)">
     <div class="busStop">
@@ -33,7 +47,37 @@
         <input type="submit" value="시작!" />
     </div>
 </form>
+<script>
+    let index = 0;
 
-<script src="service.js"></script>
+
+    setInterval(()=>{
+        document.getElementById("test").innerHTML = index;
+        ++index
+    },1000);
+</script>
+<!--<script>-->
+<!--    function submitForm(event) {-->
+<!--        // Prevent form submission-->
+<!--        event.preventDefault();-->
+
+<!--        // Get form values-->
+<!--        const busStopNumber = document.getElementById("busStopNumber").value;-->
+<!--        const busNumber = document.getElementById("busNumber").value;-->
+<!--        const targetNumber = document.getElementById("targetNumber").value;-->
+
+<!--        // Log form values (modify as needed)-->
+<!--        console.log("버스 정류장 번호: " + busStopNumber);-->
+<!--        console.log("버스 번호: " + busNumber);-->
+<!--        console.log("몇 정류장 전에 알려드릴까요?: " + targetNumber);-->
+
+<!--        // Send message to Service Worker-->
+<!--        navigator.serviceWorker.controller.postMessage({-->
+<!--            type: 'submitForm',-->
+<!--            data: { busStopNumber, busNumber, targetNumber }-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
+<script src="javascript/service.js"></script>
 </body>
 </html>
