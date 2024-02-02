@@ -1,45 +1,23 @@
-self.addEventListener('install', event => {
-    console.log('되냐?')
-    event.waitUntil(
-        caches.open('my-cache').then(cache => {
-            return cache.addAll([
-                '/javascript',
-                '/index.html',
-                '/javascript/service-worker.js',
-                '/javascript/sw.js'
-                // Add other files that should be cached
-            ]);
-        })
-    );
-});
+importScripts("https://cdn.flarelane.com/ServiceWorker.js");
 
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request).then(response => {
-            return response || fetch(event.request);
-        })
-    );
-});
-
-self.addEventListener('message', event => {
-    console.log('message')
-    if (event.data && event.data.type === 'submitForm') {
-        const { busStopNumber, busNumber, targetNumber } = event.data.data;
-        // Call your background function here
-        apiCall(busStopNumber, busNumber, targetNumber);
+//폼 제출시 동작하는 리스너
+self.addEventListener('message', (event) => {
+    console.log('message');
+    if (event.data && event.data.type === 'personal') {
+        const data = event.data.data;
+        // 여기서 data.busStopNumber, data.busNumber, data.targetNumber 등을 사용할 수 있습니다.
+        console.log('Received data in service worker:', data);
+        setInterval( ()=>alarm(), 5000);
+        //apiCall(data.busStopNumber, data.busNumber, data.targetNumber);
     }
 });
-
-// Other parts of your Service Worker script
-
-// Add other event listeners as needed
-
 
 
 function apiCall(busStopNumber, busNumber, targetNumber) {
     console.log("apiCall 실행");
 
-    var url = `http://localhost:8080/busstop/${busStopNumber}/buses`;
+    //var url = `http://localhost:8080/busstop/${busStopNumber}/buses`;
+    var url =`http://localhost:8080/bus`;
 
     fetch(url)
         .then(response => {
@@ -55,7 +33,7 @@ function apiCall(busStopNumber, busNumber, targetNumber) {
             const targetBus = data.find(bus => bus.busNumber === busNumber);
             if (targetBus) {
                 const remainingBusStop527 = targetBus.remainingBusStop;
-                document.getElementById('test').innerHTML = remainingBusStop527;
+                //document.getElementById('test').innerHTML = remainingBusStop527;
                 console.log("busNumber 527의 remainingBusStop 값:", remainingBusStop527);
 
                 // 특정 조건이 충족되면 푸시 알림 표시
@@ -77,6 +55,7 @@ function apiCall(busStopNumber, busNumber, targetNumber) {
             console.error('Error:', error);
         });
 }
+
 
 function alarm() {
     const url = 'https://api.flarelane.com/v1/projects/e6060748-0244-4a5b-8029-2c9d6a2f0876/notifications';
@@ -102,4 +81,3 @@ function alarm() {
         .catch(error => console.error('Error:', error));
 
 }
-

@@ -3,23 +3,22 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+
     <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
     <script> FlareLane.initialize({ projectId: "e6060748-0244-4a5b-8029-2c9d6a2f0876" }); </script>
 
-<!--    <script>-->
-<!--        if ('serviceWorker' in navigator) {-->
-<!--            navigator.serviceWorker.register('/javascript/service-worker.js')-->
-<!--                .then(registration => {-->
-<!--                    console.log('Service Worker registered with scope:', registration.scope);-->
-<!--                })-->
-<!--                .catch(error => {-->
-<!--                    console.error('Service Worker registration failed:', error);-->
-<!--                });-->
-<!--        }-->
-<!--    </script>-->
-
-
-    <link rel="manifest" href="/manifest.json">
+<!--    <link rel="manifest" href="/manifest.json">-->
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -47,37 +46,15 @@
         <input type="submit" value="시작!" />
     </div>
 </form>
-<script>
-    let index = 0;
-
-
-    setInterval(()=>{
-        document.getElementById("test").innerHTML = index;
-        ++index
-    },1000);
-</script>
 <!--<script>-->
-<!--    function submitForm(event) {-->
-<!--        // Prevent form submission-->
-<!--        event.preventDefault();-->
+<!--    let index = 0;-->
 
-<!--        // Get form values-->
-<!--        const busStopNumber = document.getElementById("busStopNumber").value;-->
-<!--        const busNumber = document.getElementById("busNumber").value;-->
-<!--        const targetNumber = document.getElementById("targetNumber").value;-->
 
-<!--        // Log form values (modify as needed)-->
-<!--        console.log("버스 정류장 번호: " + busStopNumber);-->
-<!--        console.log("버스 번호: " + busNumber);-->
-<!--        console.log("몇 정류장 전에 알려드릴까요?: " + targetNumber);-->
-
-<!--        // Send message to Service Worker-->
-<!--        navigator.serviceWorker.controller.postMessage({-->
-<!--            type: 'submitForm',-->
-<!--            data: { busStopNumber, busNumber, targetNumber }-->
-<!--        });-->
-<!--    }-->
+<!--    setInterval(()=>{-->
+<!--        document.getElementById("test").innerHTML = index;-->
+<!--        ++index-->
+<!--    },1000);-->
 <!--</script>-->
-<script src="javascript/service.js"></script>
+<script src="service.js"></script>
 </body>
 </html>
