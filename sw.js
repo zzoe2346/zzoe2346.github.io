@@ -7,8 +7,7 @@ self.addEventListener('message', (event) => {
         const data = event.data.data;
         // 여기서 data.busStopNumber, data.busNumber, data.targetNumber 등을 사용할 수 있습니다.
         console.log('Received data in service worker:', data);
-        setInterval( ()=>alarm(), 5000);
-        //apiCall(data.busStopNumber, data.busNumber, data.targetNumber);
+        apiCall(data.busStopNumber, data.busNumber, data.targetNumber);
     }
 });
 
@@ -16,8 +15,7 @@ self.addEventListener('message', (event) => {
 function apiCall(busStopNumber, busNumber, targetNumber) {
     console.log("apiCall 실행");
 
-    //var url = `http://localhost:8080/busstop/${busStopNumber}/buses`;
-    var url =`http://localhost:8080/bus`;
+    var url = `https://apis.data.go.kr/1613000/ArvlInfoInqireService/getSttnAcctoArvlPrearngeInfoList?serviceKey=KaMN32QU5iddZ2p7xxSw3BodH5qyNiC2WYFDg2bQMK7QT2SdOitDuL8YT23425Eu7QkCnfmZZpd9rM9RXc4bTA%3D%3D&pageNo=1&numOfRows=10&_type=json&cityCode=22&nodeId=${busStopNumber}`;
 
     fetch(url)
         .then(response => {
@@ -29,25 +27,40 @@ function apiCall(busStopNumber, busNumber, targetNumber) {
         .then(data => {
             console.log(data);
 
-            //const targetBus = data.find(bus => bus.busNumber === "527");
-            const targetBus = data.find(bus => bus.busNumber === busNumber);
-            if (targetBus) {
-                const remainingBusStop527 = targetBus.remainingBusStop;
-                //document.getElementById('test').innerHTML = remainingBusStop527;
-                console.log("busNumber 527의 remainingBusStop 값:", remainingBusStop527);
+            const filteredData = data.response.body.items.item.filter(item => item.routeno == busNumber);
 
-                // 특정 조건이 충족되면 푸시 알림 표시
-                if (remainingBusStop527 <= targetNumber) {
-                    console.log('여기 까지 온건가');
-                    alarm();
-                    window.alert("end!");
-                    return;
-                }
+            const minArrPrevStationCntItem = filteredData.reduce((minItem, currentItem) => {
+                return currentItem.arrprevstationcnt < minItem.arrprevstationcnt ? currentItem : minItem;
+            });
 
 
-            } else {
-                console.log("해당하는 busNumber를 찾을 수 없습니다.");
+            console.log(minArrPrevStationCntItem);
+            if(minArrPrevStationCntItem.arrprevstationcnt == targetNumber){
+                console.log('조건 도달');
+                alarm();
+                return;
             }
+
+
+            //const targetBus = data.find(bus => bus.busNumber === "527");
+            // const targetBus = data.find(bus => bus.busNumber === busNumber);
+            // if (targetBus) {
+            //     const remainingBusStop527 = targetBus.remainingBusStop;
+            //     //document.getElementById('test').innerHTML = remainingBusStop527;
+            //     console.log("busNumber 527의 remainingBusStop 값:", remainingBusStop527);
+            //
+            //     // 특정 조건이 충족되면 푸시 알림 표시
+            //     if (remainingBusStop527 <= targetNumber) {
+            //         console.log('여기 까지 온건가');
+            //         alarm();
+            //         window.alert("end!");
+            //         return;
+            //     }
+            //
+            //
+            // } else {
+            //     console.log("해당하는 busNumber를 찾을 수 없습니다.");
+            // }
             // Schedule the next fetch after a delay
             setTimeout(() => apiCall(busStopNumber, busNumber, targetNumber), 5000);
         })
@@ -56,7 +69,12 @@ function apiCall(busStopNumber, busNumber, targetNumber) {
         });
 }
 
-
+// Function to extract data based on routeno
+function getDataByRouteNo(responseData,routeNo) {
+    const items = responseData.response.body.items.item;
+    const filteredData = items.filter(item => item.routeno === routeNo);
+    return filteredData;
+}
 function alarm() {
     const url = 'https://api.flarelane.com/v1/projects/e6060748-0244-4a5b-8029-2c9d6a2f0876/notifications';
     const token = '8R6iUE3lSyz4aW_O0cjFm';

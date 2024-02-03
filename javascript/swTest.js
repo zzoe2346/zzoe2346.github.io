@@ -3,7 +3,7 @@
 self.addEventListener('install', (event) => {
     // 서비스워커 설치 시 초기화 작업
     self.skipWaiting();
-    console.log('stat')
+    console.log('se')
 });
 
 self.addEventListener('activate', (event) => {

@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script>
+    <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js')
                 .then(registration => {
@@ -16,9 +16,9 @@
     </script>
 
     <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
-    <script> FlareLane.initialize({ projectId: "e6060748-0244-4a5b-8029-2c9d6a2f0876" }); </script>
+    <script> FlareLane.initialize({projectId: "e6060748-0244-4a5b-8029-2c9d6a2f0876"}); </script>
 
-<!--    <link rel="manifest" href="/manifest.json">-->
+    <link rel="manifest" href="/manifest.json">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -31,19 +31,29 @@
 
 <form method="get" id="busStopForm" onsubmit="submitForm(event)">
     <div class="busStop">
-        <label>버스 정류장 번호: </label>
-        <input type="text" name="name" id="busStopNumber" required />
+        <label>버스 정류장 번호</label>
+<!--        <input type="text" name="name" id="busStopNumber" required/>-->
+        <select name="busStopNumber" id="busStopNumber" required>
+            <option value="DGB7031008000">서구청건너</option>
+            <option value="DGB7031010800">서도초등학교앞</option>
+            <!-- 다른 정류장 옵션들 추가 -->
+        </select>
     </div>
     <div class="busNumber">
-        <label>버스 번호: </label>
-        <input type="number"  id="busNumber" required />
+        <label>버스 번호</label>
+<!--        <input type="number" id="busNumber"  required/>-->
+        <select id="busNumber" required>
+            <option value="323-1">323-1</option>
+            <option value="323">323</option>
+            <!-- 다른 정류장 옵션들 추가 -->
+        </select>
     </div>
     <div class="form-example">
         <label>몇 정류장 전에 알려드릴까요?: </label>
-        <input type="number"  id="targetNumber" required />
+        <input type="number" id="targetNumber" required/>
     </div>
     <div class="form-example">
-        <input type="submit" value="시작!" />
+        <input type="submit" value="시작!"/>
     </div>
 </form>
 <!--<script>-->
