@@ -42,26 +42,6 @@ function apiCall(busStopNumber, busNumber, targetNumber) {
             }
 
 
-            //const targetBus = data.find(bus => bus.busNumber === "527");
-            // const targetBus = data.find(bus => bus.busNumber === busNumber);
-            // if (targetBus) {
-            //     const remainingBusStop527 = targetBus.remainingBusStop;
-            //     //document.getElementById('test').innerHTML = remainingBusStop527;
-            //     console.log("busNumber 527의 remainingBusStop 값:", remainingBusStop527);
-            //
-            //     // 특정 조건이 충족되면 푸시 알림 표시
-            //     if (remainingBusStop527 <= targetNumber) {
-            //         console.log('여기 까지 온건가');
-            //         alarm();
-            //         window.alert("end!");
-            //         return;
-            //     }
-            //
-            //
-            // } else {
-            //     console.log("해당하는 busNumber를 찾을 수 없습니다.");
-            // }
-            // Schedule the next fetch after a delay
             setTimeout(() => apiCall(busStopNumber, busNumber, targetNumber), 5000);
         })
         .catch(error => {

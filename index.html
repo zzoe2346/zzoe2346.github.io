@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script>
@@ -14,57 +15,56 @@
                 });
         }
     </script>
-
     <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
     <script> FlareLane.initialize({projectId: "e6060748-0244-4a5b-8029-2c9d6a2f0876"}); </script>
 
     <link rel="manifest" href="/manifest.json">
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
     <title>Title</title>
 </head>
 <body>
-<h1>Let's GO!</h1>
-
-<a href="https://businfo.daegu.go.kr:8095/dbms_web/">버스 정류장 번호 찾기</a>
-
-<label id="test"></label>
-
-<form method="get" id="busStopForm" onsubmit="submitForm(event)">
-    <div class="busStop">
-        <label>버스 정류장 번호</label>
-<!--        <input type="text" name="name" id="busStopNumber" required/>-->
-        <select name="busStopNumber" id="busStopNumber" required>
-            <option value="DGB7031008000">서구청건너</option>
-            <option value="DGB7031010800">서도초등학교앞</option>
-            <!-- 다른 정류장 옵션들 추가 -->
-        </select>
-    </div>
-    <div class="busNumber">
-        <label>버스 번호</label>
-<!--        <input type="number" id="busNumber"  required/>-->
-        <select id="busNumber" required>
-            <option value="323-1">323-1</option>
-            <option value="323">323</option>
-            <!-- 다른 정류장 옵션들 추가 -->
-        </select>
-    </div>
-    <div class="form-example">
-        <label>몇 정류장 전에 알려드릴까요?: </label>
-        <input type="number" id="targetNumber" required/>
-    </div>
-    <div class="form-example">
-        <input type="submit" value="시작!"/>
-    </div>
-</form>
-<!--<script>-->
-<!--    let index = 0;-->
+    <!-- <input type="text" id="searchInput" placeholder="Search for bus stop...">
+    <ul id="suggestions"></ul> -->
+<div class="container mt-1">
+    <h1>버스 알리미</h1>
+    <form method="get" id="busStopForm" onsubmit="submitForm(event)">
+        <div class="mb-3">
+          <label for="searchInput" class="form-label">버스 정류장</label>
+          <input type="text" class="form-control" id="searchInput" aria-describedby="emailHelp" name="busStopNumber" id="busStopNumber" required>
+          <ul id="suggestions" class="list-group"></ul>
+          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        </div>
+        <div class="mb-3">
+          <label for="busNumber" class="form-label">버스 번호</label>
+          <input type="text" class="form-control" id="busNumber" required>
+        </div>
+        <div class="mb-3">
+            <label for="targetNumber" class="form-label">몇 정류장 전에 알려드릴까요?</label>
+            <select class="form-select" id="targetNumber" aria-label="Default select example" required>
+                <option value="">Open this select menu</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+          </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">시작</button>
+      </form>
 
 
-<!--    setInterval(()=>{-->
-<!--        document.getElementById("test").innerHTML = index;-->
-<!--        ++index-->
-<!--    },1000);-->
-<!--</script>-->
+
+
+
+    
+
 <script src="service.js"></script>
+<script src="javascript/busStop.js"></script>
+
 </body>
 </html>
