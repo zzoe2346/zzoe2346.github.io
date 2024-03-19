@@ -4,14 +4,7 @@ async function submitForm(event) {
 
     //시작 알리기
     window.alert('시작합니다')
-    // 페이지 이동
-    var url = "result.html" +
-        "?busStopName=" + encodeURIComponent(busStopName) +
-        "&busNumber=" + encodeURIComponent(busNumber) +
-        "&targetNumber=" + encodeURIComponent(targetNumber);
-
-    window.location.href = url;
-
+    
 
 
 
@@ -25,6 +18,14 @@ async function submitForm(event) {
 
     var busNumber = document.getElementById("busNumber").value;
     var targetNumber = document.getElementById("targetNumber").value;
+
+    // 페이지 이동
+    var url = "result.html" +
+        "?busStopName=" + encodeURIComponent(busStopName) +
+        "&busNumber=" + encodeURIComponent(busNumber) +
+        "&targetNumber=" + encodeURIComponent(targetNumber);
+
+    window.location.href = url;
 
     var springURL = `http://localhost:8080/systemStart?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
 
