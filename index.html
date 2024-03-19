@@ -28,34 +28,50 @@
 <body>
 
 <div class="container mt-5">
-    <h1>버스 알리미</h1>
-    <form method="get" id="busStopForm" onsubmit="submitForm(event)">
-        <div class="mb-3">
-          <label for="searchInput" class="form-label">버스 정류장</label>
-          <input type="text" class="form-control" id="searchInput" aria-describedby="emailHelp" name="busStopNumber" id="busStopNumber" required>
-          <ul id="suggestions" class="list-group"></ul>
-          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+
+  <div class="container">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h1>버스 알리미</h1>
+            <h6 class="mb-10" style="color: gray;">대구의 시내버스에 대한 알림을 제공합니다</h6>
         </div>
-        <div class="mb-3">
-          <label for="busNumber" class="form-label">버스 번호</label>
-          <input type="text" class="form-control" id="busNumber" required>
+        <div class="col-lg-6 text-lg-end">
+            <a href="manual.html">사용설명서</a>
         </div>
-        <div class="mb-3">
-            <label for="targetNumber" class="form-label">몇 정류장 전에 알려드릴까요?</label>
-            <select class="form-select" id="targetNumber" aria-label="Default select example" required>
-                <option value="">Open this select menu</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-          </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">시작</button>
-      </form>
+    </div>
 </div>
+<br>
+<div class="container">
+    <form method="get" id="busStopForm" onsubmit="submitForm(event)">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mb-3">
+                    <label for="searchInput" class="form-label">버스 정류장</label>
+                    <input type="text" class="form-control" id="searchInput" aria-describedby="emailHelp" name="busStopNumber" id="busStopNumber" required>
+                    <ul id="suggestions" class="list-group"></ul>
+                </div>
+                <div class="mb-3">
+                    <label for="busNumber" class="form-label">버스 번호</label>
+                    <input type="text" class="form-control" id="busNumber" required>
+                </div>
+                <div class="mb-3">
+                  <label for="targetNumber" class="form-label">몇 정류장 전에 알려드릴까요?</label>
+                  <select class="form-select" id="targetNumber" aria-label="Default select example" required>
+                      <option value="">Open this select menu</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                  </select>
+              </div>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary">시작</button>
+              </div>
+            </div>
+            
+        </div>
+    </form>
+</div>
+
 <script src="javascript/service.js"></script>
 <script src="javascript/busStop.js"></script>
 </body>
