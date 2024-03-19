@@ -1,4 +1,3 @@
-
 async function submitForm(event) {
     // 폼 제출을 막기
     event.preventDefault();
@@ -6,20 +5,27 @@ async function submitForm(event) {
     //시작 알리기
     window.alert('시작합니다')
 
+
+
+
     // 폼의 값을 가져오기
     var busStopNumber = document.getElementById("searchInput").value.trim();
-console.log(busStopNumber);
+    var busStopName = busStopNumber;
+    console.log(busStopNumber);
     busStopNumber= await getLeftValue(busStopNumber);
     console.log(busStopNumber);
-     //busStopNumber = findLeftValue(csvData,busStopNumber);
+    //busStopNumber = findLeftValue(csvData,busStopNumber);
 
     var busNumber = document.getElementById("busNumber").value;
     var targetNumber = document.getElementById("targetNumber").value;
 
     var springURL = `http://localhost:8080/systemStart?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
-    
+
     fetch(springURL);
 
+    var resultMessage =`${busStopNumber} 정류장에 ${busNumber} 버스가 ${targetNumber} 전 역일때.`;
+
+    //window.location.href = "result.html";
     // 변수 확인 로그
     console.log("버스 정류장 번호: " + busStopNumber);
     console.log("버스 번호: " + busNumber);
@@ -42,7 +48,16 @@ console.log(busStopNumber);
     // } else {
     //     console.error('Service Worker controller is null.');
     // }
+    // 페이지 이동
+    var url = "result.html" +
+        "?busStopName=" + encodeURIComponent(busStopName) +
+        "&busNumber=" + encodeURIComponent(busNumber) +
+        "&targetNumber=" + encodeURIComponent(targetNumber);
+
+    window.location.href = url;
+
 }
+
 async function getLeftValue(rightValue) {
     // CSV 파일을 가져와서 배열로 변환
     // csvData =  fetchCSV(url);

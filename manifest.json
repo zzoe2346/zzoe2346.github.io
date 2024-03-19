@@ -1,6 +1,6 @@
 {
-  "name": "출발하세요",
-  "short_name": "출발",
+  "name": "버스알리미",
+  "short_name": "버스알리미",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fff",
