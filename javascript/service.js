@@ -20,10 +20,15 @@ async function submitForm(event) {
     var targetNumber = document.getElementById("targetNumber").value;
 
     // 페이지 이동
+    // var url = "result.html" +
+    //     "?busStopName=" + encodeURIComponent(busStopName) +
+    //     "&busNumber=" + encodeURIComponent(busNumber) +
+    //     "&targetNumber=" + encodeURIComponent(targetNumber);
     var url = "result.html" +
-        "?busStopName=" + encodeURIComponent(busStopName) +
-        "&busNumber=" + encodeURIComponent(busNumber) +
-        "&targetNumber=" + encodeURIComponent(targetNumber);
+        "?busStopName=" + busStopName +
+        "&busNumber=" + busNumber +
+        "&targetNumber=" + targetNumber;
+        
 
     window.location.href = url;
 
@@ -33,7 +38,6 @@ async function submitForm(event) {
 
   
 
-    //window.location.href = "result.html";
     // 변수 확인 로그
     console.log("버스 정류장 번호: " + busStopNumber);
     console.log("버스 번호: " + busNumber);
