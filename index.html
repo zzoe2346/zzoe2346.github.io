@@ -41,6 +41,7 @@
     </div>
 </div>
 <br>
+
 <div class="container">
     <form method="get" id="busStopForm" onsubmit="submitForm(event)">
         <div class="row">
@@ -51,13 +52,14 @@
                     <ul id="suggestions" class="list-group"></ul>
                 </div>
                 <div class="mb-3">
-                    <label for="busNumber" class="form-label">버스 번호</label>
-                    <input type="text" class="form-control" id="busNumber" required>
+                    <label for="busNumber" class="form-label" >버스 번호</label>
+                    <input type="text" class="form-control" id="busNumber" placeholder="ex: 156, 급행1, 순환2-1" required>
                 </div>
                 <div class="mb-3">
                   <label for="targetNumber" class="form-label">몇 정류장 전에 알려드릴까요?</label>
-                  <select class="form-select" id="targetNumber" aria-label="Default select example" required>
-                      <option value="">Open this select menu</option>
+              
+                  <select class="form-select" id="targetNumber" aria-label="Default select example" >
+                      <option value="" disabled selected hidden>선택해주세요</option>>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
