@@ -27,7 +27,11 @@ async function submitForm(event) {
     
     
 
-    await fetch(springURL);
+    
+    
+    fetch(springURL);
+    
+
 
   
 
@@ -46,7 +50,11 @@ async function submitForm(event) {
         "&targetNumber=" + targetNumber;
         
 
-    window.location.href = url;
+        setTimeout(function() {
+            // 이 부분은 0.8초 후에 실행됩니다.
+            window.location.href = url;
+        }, 800);
+    
 
     
 
