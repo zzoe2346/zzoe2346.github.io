@@ -19,6 +19,19 @@ async function submitForm(event) {
     var busNumber = document.getElementById("busNumber").value;
     var targetNumber = document.getElementById("targetNumber").value;
 
+    // var springURL = `http://localhost:8080//bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
+
+    var springURL = `http://101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
+    
+
+    fetch(springURL);
+
+  
+
+    // 변수 확인 로그
+    console.log("버스 정류장 번호: " + busStopNumber);
+    console.log("버스 번호: " + busNumber);
+    console.log("몇 정류장 전에 알려드릴까요?: " + targetNumber);
     // 페이지 이동
     // var url = "result.html" +
     //     "?busStopName=" + encodeURIComponent(busStopName) +
@@ -32,16 +45,7 @@ async function submitForm(event) {
 
     window.location.href = url;
 
-    var springURL = `http://localhost:8080/systemStart?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
-
-    fetch(springURL);
-
-  
-
-    // 변수 확인 로그
-    console.log("버스 정류장 번호: " + busStopNumber);
-    console.log("버스 번호: " + busNumber);
-    console.log("몇 정류장 전에 알려드릴까요?: " + targetNumber);
+    
 
 
     
