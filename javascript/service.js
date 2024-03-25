@@ -22,12 +22,12 @@ async function submitForm(event) {
     // var springURL = `http://localhost:8080//bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
 
     // var springURL = `http://101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
-    var springURL = `101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
+    var springURL = `https://101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
 
     
     
 
-    fetch(springURL);
+    await fetch(springURL);
 
   
 
