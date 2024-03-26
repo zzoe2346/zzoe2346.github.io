@@ -22,7 +22,14 @@ async function submitForm(event) {
     // var springURL = `http://localhost:8080//bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
 
     // var springURL = `http://101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
-    var springURL = `https://101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
+    // var deviceId = FlareLane.getDeviceId(id => console.log(id));
+    var deviceId;
+    FlareLane.getDeviceId(id=> deviceId = id);
+    
+    const userId = generateRandomID();
+
+
+    var springURL = `https://101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}&userId=${userId}&deviceId=${deviceId}`;
 
     
     
@@ -30,7 +37,6 @@ async function submitForm(event) {
     
     
     fetch(springURL);
-    
 
 
   
@@ -47,7 +53,8 @@ async function submitForm(event) {
     var url = "result.html" +
         "?busStopName=" + busStopName +
         "&busNumber=" + busNumber +
-        "&targetNumber=" + targetNumber;
+        "&targetNumber=" + targetNumber+
+        "&userId=" + userId;
         
 
         setTimeout(function() {
@@ -85,6 +92,21 @@ async function getLeftValue(rightValue) {
     // 일치하는 값이 없을 경우 null 반환
     return null;
 }
+
+function generateRandomID() {
+    // 가능한 문자들
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let randomID = '';
+    
+    // 6자리 랜덤 ID 생성
+    for (let i = 0; i < 8; i++) {
+        randomID += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    
+    return randomID;
+}
+
 
 
 

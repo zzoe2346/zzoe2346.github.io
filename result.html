@@ -17,6 +17,9 @@
         <h4 id="message4"></h4>
     <div calss ="container"id="lottie-pop" style="width: 300px; height: 300px;"></div>
 </div>
+<div class="mb-3" style="margin: 0 auto; text-align: center;">
+    <button type="submit" class="btn btn-primary" id="cancelButton">취소하기</button>
+</div>
 
 <script>
     var lottieAni = bodymovin.loadAnimation({
@@ -33,6 +36,7 @@ let param = new URLSearchParams(query);
 let busStopName = param.get('busStopName');
 let busNumber = param.get('busNumber');
 let targetNumber = param.get('targetNumber');
+let userId = param.get('userId');
 
 let message1 = `${busNumber} 버스가`
 let message2 = `${busStopName} 정류장에서`
@@ -44,6 +48,29 @@ document.getElementById("message3").textContent = message3;
 document.getElementById("message4").textContent = message4;
 
 
+</script>
+<script>
+    document.getElementById("cancelButton").addEventListener("click", function() {
+            // GET 요청을 보내고자 하는 URL 설정
+            const url = `https://101.101.216.221:8080//cancel?userId=${userId}`; // 여기에 실제 요청을 보낼 URL을 입력하세요.
+
+            // 새로운 GET 요청 보내기
+            fetch(url);
+            window.alert('취소되었습니다')
+            // fetch(url, {
+            //     method: "GET"
+            // })
+            // .then(response => {
+            //     if (!response.ok) {
+            //         throw new Error("Network response was not ok");
+            //     }
+            //     // 여기에서 추가적인 처리를 할 수 있습니다.
+            //     console.log("GET 요청이 성공적으로 전송되었습니다.");
+            // })
+            // .catch(error => {
+            //     console.error("There was a problem with the GET request:", error.message);
+            // });
+        });
 </script>
 
 </body>
