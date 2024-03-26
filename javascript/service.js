@@ -25,8 +25,13 @@ async function submitForm(event) {
     // var deviceId = FlareLane.getDeviceId(id => console.log(id));
     
 
+    
 
     const userId = generateRandomID();
+    FlareLane.setUserId(userId);
+    var deviceId;
+    FlareLane.getDeviceId(id=> deviceId = id);
+    console.log(deviceId);
 
 
     var springURL = `https://101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}&userId=${userId}&deviceId=${deviceId}`;
