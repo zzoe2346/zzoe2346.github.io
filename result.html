@@ -52,10 +52,11 @@ document.getElementById("message4").textContent = message4;
 <script>
     document.getElementById("cancelButton").addEventListener("click", function() {
             // GET 요청을 보내고자 하는 URL 설정
-            const url = `https://101.101.216.221:8080//cancel?userId=${userId}`; // 여기에 실제 요청을 보낼 URL을 입력하세요.
+            const url = `https://101.101.216.221:8080/cancel?userId=${userId}`; // 여기에 실제 요청을 보낼 URL을 입력하세요.
 
             // 새로운 GET 요청 보내기
             fetch(url);
+            console.log(userId);
             window.alert('취소되었습니다')
             // fetch(url, {
             //     method: "GET"
