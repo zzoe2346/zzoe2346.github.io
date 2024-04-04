@@ -1,3 +1,4 @@
+
 // CSV 데이터를 가져와서 처리하는 함수
 function fetchCSV(url) {
     return fetch(url)
@@ -39,4 +40,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 });
+
 

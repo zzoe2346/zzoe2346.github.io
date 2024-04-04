@@ -1,3 +1,19 @@
+// 쿠키 가져오기 함수
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var cookies = document.cookie.split(';');
+    for(var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        while (cookie.charAt(0) == ' ') {
+            cookie = cookie.substring(1, cookie.length);
+        }
+        if (cookie.indexOf(nameEQ) == 0) {
+            return cookie.substring(nameEQ.length, cookie.length);
+        }
+    }
+    return null;
+}
+
 async function submitForm(event) {
     // 폼 제출을 막기
     event.preventDefault();
@@ -24,17 +40,26 @@ async function submitForm(event) {
     // var springURL = `http://101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}`;
     // var deviceId = FlareLane.getDeviceId(id => console.log(id));
     
+    // 쿠키에서 사용자 ID 가져오기
+    var userId = getCookie('userId');
+    // 쿠키에 사용자 ID가 없는 경우
+    if (!userId) {
+        userId = generateRandomID(); // 새로운 사용자 ID 생성
+        FlareLane.setUserId(userId); // flarelane에 등록
+        // 쿠키에 사용자 ID 설정 (예: 365일 동안 유지)
+        document.cookie = 'userId=' + userId + '; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
+    }
+    console.log('사용자 ID:', userId);
 
-    
 
-    const userId = generateRandomID();
-    FlareLane.setUserId(userId);
-    var deviceId;
-    FlareLane.getDeviceId(id=> deviceId = id);
-    console.log(deviceId);
+    //const userId = generateRandomID();
+    // FlareLane.setUserId(userId);
+    // var deviceId;
+    // FlareLane.getDeviceId(id=> deviceId = id);
+    // console.log(deviceId);
 
 
-    var springURL = `https://101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}&userId=${userId}&deviceId=${deviceId}`;
+    var springURL = `https://101.101.216.221:8080/bus-arrival-info?nodeId=${busStopNumber}&targetNumber=${targetNumber}&targetBus=${busNumber}&userId=${userId}`;
 
     
     
@@ -64,12 +89,11 @@ async function submitForm(event) {
 
         setTimeout(function() {
             // 이 부분은 0.8초 후에 실행됩니다.
-            window.location.href = url;
+            window.location.href = url; 
         }, 800);
     
 
     
-
 
     
     
