@@ -1,0 +1,46 @@
+.container {
+    text-align: center;
+}
+
+.icon-container {
+    margin-top: 20px;
+}
+
+.icon-wrapper {
+    display: inline-block;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.icon-wrapper p {
+    margin-top: 5px;
+}
+.icon-wrapper img {
+    margin-right: 15px;
+    margin-left: 15px;
+    width: 150px; /* 이미지의 너비를 조정합니다. */
+    height: auto; /* 높이를 자동으로 조정하여 비율을 유지합니다. */
+}
+.title {
+    font-family: Georgia, serif;
+font-size: 70px;
+letter-spacing: 1px;
+word-spacing: 2px;
+color: #000000;
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
+margin-bottom: 1px;
+
+}
+
+.subTitle {
+    margin-top: 1%;
+    color: #666; /* 부제목의 글자색을 지정합니다. */
+    font-size: 18px; /* 부제목의 글자 크기를 지정합니다. */
+    margin-bottom: 30px;
+}
+
+
