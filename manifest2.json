@@ -1,0 +1,9 @@
+{
+    "name": "LinKnu",
+    "short_name": "LinKnu",
+    "start_url": "/linknu.html",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "welcome to LINKNU",
+    "scope": "/"
+}
